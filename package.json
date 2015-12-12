@@ -2,9 +2,9 @@
   "name": "week1",
   "version": "1.0.0",
   "description": "",
-  "main": "binary-search-test.js",
+  "main": "cards-sort-test.js",
   "scripts": {
-    "test": "mocha binary-search-test.js"
+    "test": "mocha ./sort/cards-sort-test.js"
   },
   "dependencies": {
     "lodash": "^3.10.1",
