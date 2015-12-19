@@ -16,6 +16,25 @@ var TU;
                 });
                 return _this.cards;
             };
+            // insert = (rightIndex:number, value:number) => {
+            // 	var indexOfValueToSplice = rightIndex + 1;
+            // 	for (var currentIndex = 0; currentIndex < this.cards.length; currentIndex++) {
+            // 		if (value < this.cards[currentIndex]) {
+            // 			this.cards.splice(indexOfValueToSplice, 1);
+            // 			this.incrementBackOfArray(currentIndex); //currentIndex = 3
+            // 			this.cards[currentIndex] = value;
+            // 			return;
+            // 		}
+            // 	}
+            // }
+            this.insertOne = function (currentIdx, finalvalue) {
+                var lastSwappedIdx = currentIdx;
+                for (var i = currentIdx; i >= 0 && _this.cards[i] > _this.cards[i + 1]; i--) {
+                    _this.cards[i + 1] = _this.cards[i];
+                    lastSwappedIdx - 1;
+                }
+                _this.cards[lastSwappedIdx] = finalvalue;
+            };
             this.swap = function (smallerIdx, largerIdx) {
                 var temp = _this.cards[smallerIdx];
                 _this.cards[smallerIdx] = _this.cards[largerIdx];
@@ -28,7 +47,8 @@ var TU;
                 var cp = _this.cards;
                 return _.sortBy(cp, function (num) { return num; });
             };
-            this.cards = [1, 100, 15, 18, 34];
+            this.cards = [22, 11, 99, 88, 9, 7, 42];
+            //this.cards = [22, 11, 99];
         }
         return UF;
     })();

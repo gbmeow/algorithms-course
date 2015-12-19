@@ -7,6 +7,8 @@ export module TU {
 		this.cards = [1,100,15,18,34];
 	}
 	
+	//http://stackoverflow.com/questions/30023736/mocha-breakpoints-using-visual-studio-code
+	
 	sort = () => {
 		var cards = this.cards;
 		var that = this;
@@ -16,7 +18,6 @@ export module TU {
 				that.swap(idx, nextIndex);
 			}
 		});
-		console.log(this.cards);
 		return this.cards;
 	}
 	
