@@ -7,7 +7,7 @@
 			"request": "launch",
 			"program": "/Users/jerzybatalinski/Documents/Courses/KhanAcademy-Algorithms/node_modules/mocha/bin/_mocha",
 			"stopOnEntry": false,
-			"args": ["sort/cards-sort-test.js"],
+			"args": ["test-box/test-box-test.js"],
 			"cwd": ".",
 			"runtimeExecutable": null,
 			"runtimeArgs": [

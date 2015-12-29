@@ -43,7 +43,10 @@ describe("API", function() {
     it('starting from front sort the whole uf.cards', function() {
         var uf = new UF.UF();
         //[ 3, 5, 7, 11, 13, 2, 9, 6, '3,5,7,11,13,2,9,61': 6 ]
-        var expectedArray = [7, 9, 11, 22, 42, 88, 99];
+        //var expectedArray = [7, 9, 11, 22, 42, 88, 99];
+        var expectedArray = [11, 22, 99];
+        
+        //[22, 11, 99];
         
         for (var i = 0; i < uf.cards.length; i++) {
             var nextIdx = i + 1;
@@ -51,10 +54,10 @@ describe("API", function() {
                 uf.insertOne(i, uf.cards[nextIdx]);
             }
          }
-         console.log(uf.cards);
         expect(uf.cards).to.deep.include.members(expectedArray); 
         expect(uf.cards).to.have.length(expectedArray.length); 
     });
+       
    
       
 });
