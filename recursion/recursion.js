@@ -5,17 +5,12 @@ var TU;
         function UF() {
             this.cards = [22, 11, 99];
         }
-        // factorial(factorial:number) {
-        // 	var sum = 1;
-        // 	while (factorial > 1) {
-        // 		sum = sum * this.subFactorial(factorial);
-        // 		factorial = factorial - 2;
-        // 	}
-        // 	return sum;
-        // }
-        // subFactorial(factorial:number) {
-        // 	return factorial * (factorial - 1);
-        // }
+        UF.prototype.checkWord = function (word, num) {
+            if (num < 0) {
+                return '';
+            }
+            return word[num] + this.checkWord(word, num - 1);
+        };
         UF.prototype.factorial = function (factorial) {
             if (factorial === 1) {
                 return 1;

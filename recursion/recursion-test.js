@@ -1,4 +1,3 @@
-
 var UF = require('./recursion.js').TU;
 var expect = require('chai').expect;
 
@@ -7,20 +6,43 @@ describe("API", function() {
     beforeEach(function() {
         
     });
-    
-    it('should return factorial of any number', function() {
-        var uf = new UF.UF();
-        expect(uf.factorialSum(5)).to.equal(120);
-    });
-    
-    it('should give factorial recursively', function() {
-        var uf = new UF.UF();
-        var res = uf.factorial(8);
-        expect(res).to.equal(40320);
-        var res = uf.factorial(5);
-        expect(res).to.equal(120);
-    });
-       
-   
-      
+	
+	it('should check palindromes rotor', function() {
+		var uf = new UF.UF();
+		var expected = 'rotor';
+		var arrayFormat = expected.split('');
+		var length = 5 - 1;
+		var res = uf.checkWord(arrayFormat, length);
+		expect(res).to.equal(expected);
+	});
+	
+	it('should check palindromes redder', function() {
+		var uf = new UF.UF();
+		var expected = 'redder';
+		var arrayFormat = expected.split('');
+		var length = 6 - 1;
+		var res = uf.checkWord(arrayFormat, length);
+		expect(res).to.equal(expected);
+	});
+	
+	it('should check palindromes tennis', function() {
+		var uf = new UF.UF();
+		var expected = 'tennis';
+		var arrayFormat = expected.split('');
+		var length = 6 - 1;
+		var res = uf.checkWord(arrayFormat, length);
+		expect(res).to.not.equal(expected);
+	});
+	
+	it('should check palindromes a', function() {
+		var uf = new UF.UF();
+		var expected = 'a';
+		var arrayFormat = expected.split('');
+		var length = 1 - 1;
+		var res = uf.checkWord(arrayFormat, length);
+		expect(res).to.equal(expected);
+	});
+
+
+	
 });
