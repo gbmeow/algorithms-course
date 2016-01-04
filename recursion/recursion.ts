@@ -14,6 +14,13 @@ export module TU {
 		return word[num] + this.checkWord(word, num - 1);
 	}
 	
+	power(num:number, power:number) {
+		if (power === 0) {
+			return 1;
+		}
+		return num * this.power(num, power - 1);
+ 	};
+	
 	factorial(factorial:number) {
 		if (factorial === 1) {	
 			return 1;

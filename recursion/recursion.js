@@ -11,6 +11,13 @@ var TU;
             }
             return word[num] + this.checkWord(word, num - 1);
         };
+        UF.prototype.power = function (num, power) {
+            if (power === 0) {
+                return 1;
+            }
+            return num * this.power(num, power - 1);
+        };
+        ;
         UF.prototype.factorial = function (factorial) {
             if (factorial === 1) {
                 return 1;

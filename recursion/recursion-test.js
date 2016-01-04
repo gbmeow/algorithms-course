@@ -42,6 +42,19 @@ describe("API", function() {
 		var res = uf.checkWord(arrayFormat, length);
 		expect(res).to.equal(expected);
 	});
+	
+	it('should power it up for 2', function() {
+		var uf = new UF.UF();
+		var res = uf.power(2, 4);
+		expect(res).to.equal(16);
+	});
+	
+	it('should power it up for 100', function() {
+		var uf = new UF.UF();
+		var res = uf.power(100, 2);
+		expect(res).to.equal(10000);
+	});
+	
 
 
 	
