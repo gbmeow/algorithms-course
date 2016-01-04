@@ -27,6 +27,22 @@ var TU;
             }
             return factorial * this.factorial(factorial - 1);
         };
+        UF.prototype.traverseHuni = function (stack, value) {
+            console.log('huni ', stack[value]);
+            if (value === 0) {
+                return;
+            }
+            return value;
+        };
+        UF.prototype.honai = function (value) {
+            if (value === void 0) { value = 2; }
+            var huniTower = [[1, 2, 3], [], []];
+            if (value === 0) {
+                return;
+            }
+            console.log('here', value);
+            return this.honai(value - 1) && this.traverseHuni(huniTower[value], value - 1);
+        };
         UF.prototype.factorialSum = function (factorialCount) {
             var sum = 1;
             for (var j = factorialCount; j > 0; j--) {

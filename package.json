@@ -4,7 +4,7 @@
   "description": "",
   "main": "card-sort.js",
   "scripts": {
-    "test": "mocha ./sort/cards-sort-test.js"
+    "test": "mocha ./recursion/recursion-test.js"
   },
   "dependencies": {
     "lodash": "^3.10.1",

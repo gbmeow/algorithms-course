@@ -31,6 +31,23 @@ export module TU {
 		return factorial * this.factorial(factorial - 1);
 	}
 	
+	traverseHuni(stack:Array<number>, value:number) {
+		console.log('huni ', stack[value]);
+		if (value === 0) {
+			return;
+		}
+		return value;
+	}
+	
+	honai(value:number = 2) {
+		var  huniTower = [[1,2,3], [], []];
+		if (value === 0) {
+			return;
+		}
+		console.log('here', value);
+		return this.honai(value - 1) && this.traverseHuni(huniTower[value], value - 1);
+	}
+	
 	
 	
 	factorialSum(factorialCount:number) {

@@ -55,7 +55,11 @@ describe("API", function() {
 		expect(res).to.equal(10000);
 	});
 	
-
+	it('should GO OVER HUNAI', function() {
+			var uf = new UF.UF();
+			var res = uf.honai();
+			expect(res).to.equal(10000);
+	});
 
 	
 });
