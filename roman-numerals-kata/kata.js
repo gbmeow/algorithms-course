@@ -20,6 +20,7 @@ var TU;
                 90: 'XC',
                 100: 'C'
             };
+            this.bases = ['100', '90', '50', '40'];
         }
         UF.prototype.getNumeralEqual = function (val) {
             var result = '';
@@ -27,43 +28,32 @@ var TU;
                 result = this.rep[val];
                 return result;
             }
-            if (val > 10) {
-                if (this.canBreakLargeNumber(val, 100)) {
-                    result = this.rep[100];
-                    val = val - 100;
+            var index = 0;
+            while (index < this.bases.length) {
+                if (this.hasBase(val, this.bases[index])) {
+                    result = this.rep[this.bases[index]];
+                    val = val - Number(this.bases[index]);
                 }
-                if (this.canBreakLargeNumber(val, 90)) {
-                    result = this.rep[90];
-                    val = val - 90;
-                }
-                if (this.canBreakLargeNumber(val, 50)) {
-                    result = this.rep[50];
-                    val = val - 50;
-                }
-                if (this.canBreakLargeNumber(val, 40)) {
-                    result = this.rep[40];
-                    val = val - 40;
-                }
-                if (this.canBreakEvenTen(val)) {
-                    var tens = this.getNumberOfTenMultiple(val);
-                    result += this.getStringRepeated(val);
-                    val = val - (10 * tens);
-                    return result;
-                }
-                if (this.hasTens(val)) {
-                    var tens = this.getNumberOfTenMultiple(val);
-                    result += this.getStringRepeated(val);
-                    val = val - (10 * tens);
-                }
-                if (this.isSingles(val)) {
-                    result += this.rep[val];
-                    val = val - val;
-                }
+                index++;
+            }
+            if (this.canBreakEvenTen(val)) {
+                var tens = this.getNumberOfTenMultiple(val);
+                result += this.getStringRepeated(val);
+                val = val - (10 * tens);
+            }
+            if (this.hasTens(val)) {
+                var tens = this.getNumberOfTenMultiple(val);
+                result += this.getStringRepeated(val);
+                val = val - (10 * tens);
+            }
+            if (_.has(this.rep, val) && this.isSingles(val)) {
+                result += this.rep[val];
+                val = val - val;
             }
             return result;
         };
-        UF.prototype.isInsideForty = function (val) {
-            return val >= 40 && val <= 49;
+        UF.prototype.hasBase = function (val, base) {
+            return Math.floor(val / Number(base)) === 1;
         };
         UF.prototype.getStringRepeated = function (val) {
             var toRepeat = this.getNumberOfTenMultiple(val);
@@ -81,12 +71,6 @@ var TU;
         };
         UF.prototype.canBreakEvenTen = function (val) {
             return (val % 10) === 0;
-        };
-        UF.prototype.canBreakLargeNumber = function (currentval, base) {
-            return Math.floor(currentval / base) === 1;
-        };
-        UF.prototype.canBreakFifty = function (val) {
-            return Math.floor(val / 50);
         };
         return UF;
     })();

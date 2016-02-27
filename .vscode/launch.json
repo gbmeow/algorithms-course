@@ -7,7 +7,7 @@
 			"request": "launch",
 			"program": "/Users/jerzybatalinski/Documents/Courses/KhanAcademy-Algorithms/node_modules/mocha/bin/_mocha",
 			"stopOnEntry": false,
-			"args": ["test-box/test-box-test.js"],
+			"args": ["roman-numerals-kata/kata-test.js"],
 			"cwd": ".",
 			"runtimeExecutable": null,
 			"runtimeArgs": [

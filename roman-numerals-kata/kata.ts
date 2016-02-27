@@ -4,6 +4,7 @@ var repeat = require('repeat-string');
 export module TU {
 	export class UF {
     private rep:any;
+    private bases:Array<string>;
     
 	constructor() {
         this.rep = {
@@ -22,6 +23,7 @@ export module TU {
             90: 'XC',
             100: 'C'
         };
+        this.bases = ['100', '90', '50', '40'];
 	}
     
     getNumeralEqual(val:number) {
@@ -32,46 +34,36 @@ export module TU {
             return result;
         }
         
-        if(val > 10) {
-                if(this.canBreakLargeNumber(val, 100)) {
-                            result = this.rep[100];
-                            val = val - 100;
-                        }
-                if(this.canBreakLargeNumber(val, 90)) {
-                        result = this.rep[90];
-                        val = val - 90;
+                var index = 0;
+                while(index < this.bases.length) {
+                    if(this.hasBase(val, this.bases[index])) {
+                        result = this.rep[this.bases[index]];
+                        val = val - Number(this.bases[index]);
                     }
-                if(this.canBreakLargeNumber(val, 50)) {
-                    result = this.rep[50];
-                    val = val - 50;
-                }
-                if(this.canBreakLargeNumber(val, 40)) {
-                    result = this.rep[40];
-                    val = val - 40;
+                    index++;
                 }
                 if(this.canBreakEvenTen(val)) {
                     var tens = this.getNumberOfTenMultiple(val);
                     result +=  this.getStringRepeated(val);
                     val = val - (10 * tens);
-                    return result;
                 } 
                 if(this.hasTens(val)) {
                     var tens = this.getNumberOfTenMultiple(val);
                     result +=  this.getStringRepeated(val);
                     val = val - (10 * tens);
                 }
-                if (this.isSingles(val)) {
+                if (_.has(this.rep, val) && this.isSingles(val)) {
                     result += this.rep[val];
                     val = val - val;
                 }
-            }     
+    
       
         return result;
     }	
-   
-   isInsideForty(val:number) {
-       return val >= 40 && val <= 49;
-   }
+    
+    hasBase(val:number, base) {
+        return Math.floor(val / Number(base)) === 1;
+    }
     
     getStringRepeated(val:number) {
         var toRepeat = this.getNumberOfTenMultiple(val);
@@ -94,14 +86,7 @@ export module TU {
     canBreakEvenTen(val:number):boolean {
         return (val % 10) === 0;
     }
-    
-    canBreakLargeNumber(currentval:number, base:number) {
-        return Math.floor(currentval / base) === 1;
-    }
-    canBreakFifty(val:number) {
-        return Math.floor(val / 50);
-    }
-	
+   
 	
 	}
 }
